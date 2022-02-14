@@ -20,6 +20,13 @@ public class Delimiters
     public ArrayList<String> getDelimitersList(String[] tokens)
     {
         /* to be implemented in part (a) */
+        ArrayList<String> returnList = new ArrayList<String>();
+        for (String str : tokens){
+            if (str.equals(openDel) || str.equals(closeDel)){
+                returnList.add(str);
+            }
+        }
+        return returnList;
     }
 
     /** Returns true if the delimiters are balanced and false otherwise, as described in part (b).
@@ -28,5 +35,21 @@ public class Delimiters
     public boolean isBalanced(ArrayList<String> delimiters)
     {
         /* to be implemented in part (b) */
+        int numO = 0;
+        int numC = 0;
+        for (String str: delimiters){
+            if (str.equals(openDel)){
+                numO ++;
+            } else if ( str.equals(closeDel)){
+                numC ++;
+            }
+            if (numC > numO){
+                return false;
+            }
+        }
+        if (numC != numO){
+            return false;
+        }
+        return true;
     }
 }
